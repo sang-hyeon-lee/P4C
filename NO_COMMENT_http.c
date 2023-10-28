@@ -26,7 +26,6 @@ int main(int argc, char *argv[])
         exit(1);                              
     }
 
-    //serv_addr 초기화
     serv_sock = socket(PF_INET, SOCK_STREAM, 0);        
     memset(&serv_addr, 0, sizeof(serv_addr));           
     serv_addr.sin_family = AF_INET;                     
@@ -97,7 +96,7 @@ void response(char *type, int sock, int i)
     char Content_type[SMALL_SIZE];                     
     sprintf(Content_type, "Content-type:%s\r\n\r\n", type); 
     
-    //status.... content_type 까지 전달
+
     write(sock, Status, strlen(Status));                    
     write(sock, server, strlen(server));
     write(sock, cnt_len, strlen(cnt_len));
